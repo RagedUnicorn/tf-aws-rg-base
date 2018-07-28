@@ -8,7 +8,7 @@ This is the initial S3 bucket for storing terraform state. Because of this the u
 terraform {
   backend "s3" {
     bucket = "ragedunicorn-backend"
-    key    = "[service-name].terraform.tfstate"
+    key    = "[application-name].terraform.tfstate"
     region = "eu-central-1"
   }
 }
@@ -22,4 +22,21 @@ The key name should follow the following naming convention:
 
 ## Output
 
-- S3 Bucket
+#### S3 Bucket
+
+```
+terraform {
+  backend "s3" {
+    bucket = "ragedunicorn-backend"
+    key    = "[application-name].terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
+```
+
+| Name               | Description                            |
+|--------------------|----------------------------------------|
+| id                 | ID of the created bucket               |
+| arn                | The ARN of the bucket.                 |
+| bucket_domain_name | The bucket domain name.                |
+| region             | The AWS region this bucket resides in. |
