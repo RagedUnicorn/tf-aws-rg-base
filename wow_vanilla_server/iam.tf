@@ -128,6 +128,10 @@ data "aws_iam_policy_document" "ec2_policy_document" {
       "ec2:ModifySubnetAttribute",
       "ec2:AllocateAddress",
       "ec2:AssociateAddress",
+      "ec2:DisassociateAddress",
+      "ec2:ReleaseAddress",
+      "ec2:CreateRouteTable",
+      "ec2:CreateRoute",
     ]
 
     resources = [
