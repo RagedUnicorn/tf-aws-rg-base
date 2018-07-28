@@ -8,7 +8,7 @@ This is the initial S3 bucket for storing terraform state. Because of this the u
 terraform {
   backend "s3" {
     bucket = "ragedunicorn-backend"
-    key    = "[service-name].[service].terraform.tfstate"
+    key    = "[service-name].terraform.tfstate"
     region = "eu-central-1"
   }
 }
