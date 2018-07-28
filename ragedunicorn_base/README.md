@@ -1,0 +1,25 @@
+# RagedUnicorn Backend
+
+> The base bucket to store terraform state of all modules within this repository
+
+This is the initial S3 bucket for storing terraform state. Because of this the user of this module is responsible for tracking the state himself. The generated state of terraform is only locally available and might get lost. All other modules within this repository should use this generated bucket to store their state.
+
+```
+terraform {
+  backend "s3" {
+    bucket = "ragedunicorn-backend"
+    key    = "[service-name].[service].terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
+```
+
+The key name should follow the following naming convention:
+
+* Begin with the service name of the application
+* Follow by the aws service e.g. iam, s3 etc.
+* End with `.terraform.tfstate`
+
+## Output
+
+- S3 Bucket
