@@ -8,7 +8,7 @@ output "id" {
 
 output "arn" {
   description = "The ARN of the bucket."
-  value       = "${aws_iam_user.state_store.arn}"
+  value       = "${aws_s3_bucket.state_store.arn}"
 }
 
 output "bucket_domain_name" {
