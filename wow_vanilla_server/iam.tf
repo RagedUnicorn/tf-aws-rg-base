@@ -121,17 +121,26 @@ data "aws_iam_policy_document" "ec2_policy_document" {
       "ec2:Start*", # StartInstances
       "ec2:TerminateInstances",
       "ec2:CreateTags",
+      "ec2:DeleteTags",
+      "ec2:AssociateRouteTable",
+      "ec2:DisassociateRouteTable",
+      "ec2:ReplaceRouteTableAssociation",
       "ec2:CreateVolume",
       "ec2:AttachVolume",
       "ec2:AttachInternetGateway",
       "ec2:CreateSubnet",
+      "ec2:DeleteSubnet",
       "ec2:ModifySubnetAttribute",
       "ec2:AllocateAddress",
       "ec2:AssociateAddress",
       "ec2:DisassociateAddress",
       "ec2:ReleaseAddress",
       "ec2:CreateRouteTable",
+      "ec2:DeleteRouteTable",
       "ec2:CreateRoute",
+      "ec2:DetachInternetGateway",
+      "ec2:DeleteInternetGateway",
+      "ec2:DeleteVpc",
     ]
 
     resources = [
