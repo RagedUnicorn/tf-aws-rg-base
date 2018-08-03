@@ -4,20 +4,20 @@
 data "aws_iam_policy_document" "iam_policy_document" {
   statement {
     actions = [
-      "iam:PutRolePolicy",
-      "iam:PassRole",
-      "iam:GetRolePolicy",
       "iam:GetRole",
-      "iam:GetUser",
-      "iam:CreateRole",
-      "iam:DeleteRole",
-      "iam:DeleteRolePolicy",
       "iam:ListInstanceProfilesForRole",
+      "iam:PassRole",
+      "iam:DeleteRolePolicy",
+      "iam:DeleteRole",
+      "iam:CreateRole",
+      "iam:PutRolePolicy",
+      "iam:GetUser",
+      "iam:GetRolePolicy",
     ]
 
     resources = [
+      "arn:aws:iam::*:user/*",
       "arn:aws:iam::*:role/*",
-      "arn:aws:iam::*:*",
     ]
   }
 }
@@ -30,8 +30,8 @@ resource "aws_iam_policy" "iam_policy" {
 }
 
 resource "aws_iam_user_policy_attachment" "iam_policy_attach" {
-    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
-    policy_arn = "${aws_iam_policy.iam_policy.arn}"
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.iam_policy.arn}"
 }
 
 ####################
@@ -72,8 +72,8 @@ resource "aws_iam_policy" "cloudwatch_policy" {
 }
 
 resource "aws_iam_user_policy_attachment" "cloudwatch_policy_attach" {
-    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
-    policy_arn = "${aws_iam_policy.cloudwatch_policy.arn}"
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.cloudwatch_policy.arn}"
 }
 
 ################
@@ -115,8 +115,8 @@ resource "aws_iam_policy" "lambda_policy" {
 }
 
 resource "aws_iam_user_policy_attachment" "lambda_policy_attach" {
-    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
-    policy_arn = "${aws_iam_policy.lambda_policy.arn}"
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.lambda_policy.arn}"
 }
 
 #############
@@ -125,40 +125,57 @@ resource "aws_iam_user_policy_attachment" "lambda_policy_attach" {
 data "aws_iam_policy_document" "ec2_policy_document" {
   statement {
     actions = [
-      "ec2:Describe*",
+      "ec2:DescribeImages",
+      "ec2:DescribeInstances",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DescribeTags",
+      "ec2:DescribeInstanceAttribute",
+      "ec2:DescribeVolumes",
+      "ec2:DescribeAccountAttributes",
+      "ec2:DescribeKeyPairs",
+      "ec2:DescribeInstanceCreditSpecifications",
+      "ec2:DescribeSecurityGroups",
       "ec2:CreateSecurityGroup",
-      "ec2:CreateSecurityGroup",
+      "ec2:DescribeVpcs",
+      "ec2:DescribeVpcAttribute",
+      "ec2:DescribeRouteTables",
+      "ec2:DescribeInternetGateways",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeAddresses",
       "ec2:CreateVpc",
-      "ec2:ModifyVpcAttribute",
+      "ec2:AllocateAddress",
+      "ec2:AssociateAddress",
       "ec2:CreateInternetGateway",
-      "ec2:DeleteSecurityGroup",
-      "ec2:AuthorizeSecurityGroup*",      # AuthorizeSecurityGroup Ingress / Egress
-      "ec2:RevokeSecurityGroup*",         # RevokeSecurityGroup Ingress / Egress
-      "ec2:RunInstances",
-      "ec2:Stop*",                        # StopInstances
-      "ec2:Start*",                       # StartInstances
-      "ec2:TerminateInstances",
-      "ec2:CreateTags",
-      "ec2:DeleteTags",
       "ec2:AssociateRouteTable",
-      "ec2:DisassociateRouteTable",
-      "ec2:ReplaceRouteTableAssociation",
-      "ec2:CreateVolume",
-      "ec2:AttachVolume",
       "ec2:AttachInternetGateway",
       "ec2:CreateSubnet",
       "ec2:DeleteSubnet",
+      "ec2:DisassociateRouteTable",
+      "ec2:ReplaceRouteTableAssociation",
+      "ec2:CreateSecurityGroup",
+      "ec2:ModifyVpcAttribute",
       "ec2:ModifySubnetAttribute",
-      "ec2:AllocateAddress",
-      "ec2:AssociateAddress",
       "ec2:DisassociateAddress",
       "ec2:ReleaseAddress",
       "ec2:CreateRouteTable",
-      "ec2:DeleteRouteTable",
-      "ec2:CreateRoute",
       "ec2:DetachInternetGateway",
-      "ec2:DeleteInternetGateway",
       "ec2:DeleteVpc",
+      "ec2:AttachVolume",
+      "ec2:AuthorizeSecurityGroupEgress",
+      "ec2:AuthorizeSecurityGroupIngress",
+      "ec2:TerminateInstances",
+      "ec2:DeleteTags",
+      "ec2:CreateTags",
+      "ec2:RunInstances",
+      "ec2:StopInstances",
+      "ec2:CreateVolume",
+      "ec2:DeleteRouteTable",
+      "ec2:RevokeSecurityGroupIngress",
+      "ec2:StartInstances",
+      "ec2:CreateRoute",
+      "ec2:RevokeSecurityGroupEgress",
+      "ec2:DeleteSecurityGroup",
+      "ec2:DeleteInternetGateway",
     ]
 
     resources = [
@@ -175,8 +192,8 @@ resource "aws_iam_policy" "ec2_policy" {
 }
 
 resource "aws_iam_user_policy_attachment" "ec2_policy_attach" {
-    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
-    policy_arn = "${aws_iam_policy.ec2_policy.arn}"
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.ec2_policy.arn}"
 }
 
 ###########
