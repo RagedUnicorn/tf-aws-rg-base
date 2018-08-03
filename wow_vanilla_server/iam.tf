@@ -22,10 +22,16 @@ data "aws_iam_policy_document" "iam_policy_document" {
   }
 }
 
-resource "aws_iam_user_policy" "iam_policy" {
-  name   = "rg_tf_wow_vanilla_server_iam"
-  user   = "${aws_iam_user.wow_vanilla_server_user.id}"
-  policy = "${data.aws_iam_policy_document.iam_policy_document.json}"
+resource "aws_iam_policy" "iam_policy" {
+  name        = "rg-tf-wow-vanilla-server-iam"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server iam policy"
+  policy      = "${data.aws_iam_policy_document.iam_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "iam_policy_attach" {
+    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+    policy_arn = "${aws_iam_policy.iam_policy.arn}"
 }
 
 ####################
@@ -58,10 +64,16 @@ data "aws_iam_policy_document" "cloudwatch_policy_document" {
   }
 }
 
-resource "aws_iam_user_policy" "cloudwatch_policy" {
-  name   = "rg_tf_wow_vanilla_server_cloudwatch"
-  user   = "${aws_iam_user.wow_vanilla_server_user.id}"
-  policy = "${data.aws_iam_policy_document.cloudwatch_policy_document.json}"
+resource "aws_iam_policy" "cloudwatch_policy" {
+  name        = "rg-tf-wow-vanilla-server-cloudwatch"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server cloudwatch policy"
+  policy      = "${data.aws_iam_policy_document.cloudwatch_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "cloudwatch_policy_attach" {
+    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+    policy_arn = "${aws_iam_policy.cloudwatch_policy.arn}"
 }
 
 ################
@@ -95,10 +107,16 @@ data "aws_iam_policy_document" "lambda_policy_document" {
   }
 }
 
-resource "aws_iam_user_policy" "lambda_policy" {
-  name   = "rg_tf_wow_vanilla_server_lambda"
-  user   = "${aws_iam_user.wow_vanilla_server_user.id}"
-  policy = "${data.aws_iam_policy_document.lambda_policy_document.json}"
+resource "aws_iam_policy" "lambda_policy" {
+  name        = "rg-tf-wow-vanilla-server-lambda"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server lambda policy"
+  policy      = "${data.aws_iam_policy_document.lambda_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "lambda_policy_attach" {
+    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+    policy_arn = "${aws_iam_policy.lambda_policy.arn}"
 }
 
 #############
@@ -114,11 +132,11 @@ data "aws_iam_policy_document" "ec2_policy_document" {
       "ec2:ModifyVpcAttribute",
       "ec2:CreateInternetGateway",
       "ec2:DeleteSecurityGroup",
-      "ec2:AuthorizeSecurityGroup*", # AuthorizeSecurityGroup Ingress / Egress
-      "ec2:RevokeSecurityGroup*", # RevokeSecurityGroup Ingress / Egress
+      "ec2:AuthorizeSecurityGroup*",      # AuthorizeSecurityGroup Ingress / Egress
+      "ec2:RevokeSecurityGroup*",         # RevokeSecurityGroup Ingress / Egress
       "ec2:RunInstances",
-      "ec2:Stop*", # StopInstances
-      "ec2:Start*", # StartInstances
+      "ec2:Stop*",                        # StopInstances
+      "ec2:Start*",                       # StartInstances
       "ec2:TerminateInstances",
       "ec2:CreateTags",
       "ec2:DeleteTags",
@@ -149,10 +167,16 @@ data "aws_iam_policy_document" "ec2_policy_document" {
   }
 }
 
-resource "aws_iam_user_policy" "ec2_policy" {
-  name   = "rg_tf_wow_vanilla_server_ec2"
-  user   = "${aws_iam_user.wow_vanilla_server_user.id}"
-  policy = "${data.aws_iam_policy_document.ec2_policy_document.json}"
+resource "aws_iam_policy" "ec2_policy" {
+  name        = "rg-tf-wow-vanilla-server-ec2"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server ec2 policy"
+  policy      = "${data.aws_iam_policy_document.ec2_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "ec2_policy_attach" {
+    user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+    policy_arn = "${aws_iam_policy.ec2_policy.arn}"
 }
 
 ###########
