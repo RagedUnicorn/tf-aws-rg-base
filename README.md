@@ -6,7 +6,7 @@ This repository is the base layer for the AWS setup of RagedUnicorn. It contains
 
 ## Purpose
 
-Projects that use terraform to build their infrastructure on AWS should us an IAM user that has only the privileges he absolutely needs. That user should not be created by the project itself. Instead a new entry for a project can be created inside this repository. The user of this repository is privileged enough to create new users for new projects.
+Projects that use terraform to build their infrastructure on AWS should use an IAM user that has only the privileges he absolutely needs. That user should not be created by the project itself. Instead a new entry for a project can be created inside this repository. The user of this repository is privileged enough to create new users for new projects.
 
 Additionally terraform projects should store their state on a backend such as S3. For this an S3 store needs to be preexisting. This is also a responsibility of this repository.
 
@@ -23,7 +23,7 @@ A list of applications that are managed by this repository:
 
 ### Credentials
 
-Credentials can be setup in different ways. The modules within this repository either expect the credentials to be available via environment variables or supplied directly to terraform as variables.
+Credentials can be setup in different ways. The modules within this repository either expects the credentials to be available via environment variables or supplied directly to terraform as variables.
 
 ```
 export AWS_ACCESS_KEY_ID="[acceskey]"
@@ -45,7 +45,7 @@ For more details see [documentation](https://www.terraform.io/docs/providers/aws
 
 The first step that needs to be done is to create the S3 bucket backend for this repository
 
-Module `ragedunciorn_base` will create an S3 bucket that is then subsequently used by other modules as a backend to store the terraform state.
+Application `ragedunciorn_base` will create an S3 bucket that is then subsequently used by other applications as a backend to store the terraform state.
 
 ```
 cd ragedunciorn_base
@@ -60,7 +60,7 @@ terraform plan
 terraform apply
 ```
 
-**Note:** This is the only exception of a module that creates resources but does not store its terraform state anywhere except locally. In this case the user is responsible by himself that the s3 bucket was not already created. Every other module does store its state in this bucket.
+**Note:** This is the only exception of a module that creates resources but does not store its terraform state anywhere except locally. In this case the user is responsible by himself that the S3 bucket was not already created. Every other module does store its state in this bucket.
 
 ### Setup an Application
 
@@ -124,7 +124,7 @@ While it is possible to give a user both ui and cli access it is better to split
     * deployer - A user that is used for deploying infrastructure and the application itself (usually a cli user that is used in conjunction with terraform)
 
 ```
-# An example for a command line user that is being used with terraform and its role is that of an admin
+# An example for a command line user that is being used within terraform and its role is that of an admin
 rg_cli_tf_admin
 # A command line user with the role of an admin
 rg_cli_admin
@@ -159,7 +159,7 @@ A command line user for the AWS cli
 
 > A description of how the AWS S3 setup looks like for RagedUnicorn
 
-Buckets that are create from this repository are exclusively used for storing terraform state. If an application requires an S3 bucket for any other use it should be able to create the bucket by itself and the configuration should be in the repository of the application.
+Buckets that are created from this repository are exclusively used for storing terraform state. If an application requires an S3 bucket for any other use it should be able to create the bucket by itself and the configuration should be in the repository of the application.
 
 ### Naming Conventions
 
@@ -175,7 +175,7 @@ Application entries within this repository need to store their state inside the 
 terraform {
   backend "s3" {
     bucket = "ragedunicorn-backend"
-    key    = "[module-name].[service].terraform.tfstate"
+    key    = "[application-name].[service].terraform.tfstate"
     region = "eu-central-1"
   }
 }
