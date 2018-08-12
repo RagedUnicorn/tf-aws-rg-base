@@ -89,7 +89,7 @@ data "aws_iam_policy_document" "lambda_policy_document" {
       "lambda:RemovePermission",
       "lambda:DeleteFunction",
       "lambda:UpdateFunctionConfiguration",
-      "lambda:UpdateFunctionCode"
+      "lambda:UpdateFunctionCode",
     ]
 
     resources = [
@@ -218,11 +218,11 @@ data "aws_iam_policy_document" "api_gateway_policy_document" {
       "apigateway:POST",
       "apigateway:GET",
       "apigateway:PUT",
-      "apigateway:DELETE"
+      "apigateway:DELETE",
     ]
 
     resources = [
-      "*"
+      "*",
     ]
   }
 }
@@ -252,11 +252,11 @@ data "aws_iam_policy_document" "route53_policy_document" {
       "route53:ChangeResourceRecordSets",
       "route53:ListResourceRecordSets",
       "route53:DeleteHostedZone",
-      "route53:UpdateHostedZoneComment"
+      "route53:UpdateHostedZoneComment",
     ]
 
     resources = [
-      "*"
+      "*",
     ]
   }
 }
