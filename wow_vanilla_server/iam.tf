@@ -13,6 +13,7 @@ data "aws_iam_policy_document" "iam_policy_document" {
       "iam:PutRolePolicy",
       "iam:GetUser",
       "iam:GetRolePolicy",
+      "iam:DeleteRolePermissionsBoundary",
     ]
 
     resources = [
