@@ -89,6 +89,7 @@ data "aws_iam_policy_document" "lambda_policy_document" {
       "lambda:RemovePermission",
       "lambda:DeleteFunction",
       "lambda:UpdateFunctionConfiguration",
+      "lambda:UpdateFunctionCode"
     ]
 
     resources = [
