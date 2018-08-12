@@ -14,10 +14,11 @@ Additionally terraform projects should store their state on a backend such as S3
 
 A list of applications that are managed by this repository:
 
-| Name               | Description                                                       |
-|--------------------|-------------------------------------------------------------------|
-| ragedunicorn_base  | The base module for this repository                               |
-| wow_vanilla_server | A module for creating the infrastructure for a wow vanilla server |
+| Name                  | Description                                                       |
+|-----------------------|-------------------------------------------------------------------|
+| ragedunicorn_backend  | The base module for creating the backend for this repository      |
+| ragedunicorn_base     | The base module for the RagedUnicorn organization                 |
+| wow_vanilla_server    | A module for creating the infrastructure for a wow vanilla server |
 
 ## Setup
 
