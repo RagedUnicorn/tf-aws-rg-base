@@ -2,7 +2,7 @@
 
 > Base repository for RagedUnicorn aws resources
 
-This repository is the base layer for the AWS setup of RagedUnicorn. It contains resources such as S3 bucket and IAM resources.
+This repository is the base layer for the AWS setup of RagedUnicorn. It contains resources such as S3 buckets and IAM resources.
 
 ## Purpose
 
@@ -45,7 +45,7 @@ For more details see [documentation](https://www.terraform.io/docs/providers/aws
 
 The first step that needs to be done is to create the S3 bucket backend for this repository
 
-Application `ragedunciorn_base` will create an S3 bucket that is then subsequently used by other applications as a backend to store the terraform state.
+Application `ragedunciorn_backend` will create an S3 bucket that is then subsequently used by other applications as a backend to store the terraform state.
 
 ```
 cd ragedunciorn_base
