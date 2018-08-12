@@ -1,22 +1,12 @@
-#####
-# S3
-#####
-output "id" {
-  description = "ID of the created bucket"
-  value       = "${aws_s3_bucket.ragedunicorn_backend.id}"
+######
+# IAM
+######
+output "gateway_push_logs_role_name" {
+  description = "The name of the Api Gateway push logs role"
+  value       = "${aws_iam_role.api_gateway_push_logs_role.name}"
 }
 
-output "arn" {
-  description = "The ARN of the bucket."
-  value       = "${aws_s3_bucket.ragedunicorn_backend.arn}"
-}
-
-output "bucket_domain_name" {
-  description = " The bucket domain name."
-  value       = "${aws_s3_bucket.ragedunicorn_backend.bucket_domain_name}"
-}
-
-output "region" {
-  description = "The AWS region this bucket resides in."
-  value       = "${aws_s3_bucket.ragedunicorn_backend.region}"
+output "gateway_push_logs_role_arn" {
+  description = "The arn name of the Api Gateway push logs role"
+  value       = "${aws_iam_role.api_gateway_push_logs_role.arn}"
 }

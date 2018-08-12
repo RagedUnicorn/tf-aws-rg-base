@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "ragedunicorn-backend"
+    key    = "ragedunicorn-base.terraform.tfstate"
+    region = "eu-central-1"
+  }
+}
+
 ###############
 # AWS provider
 ###############
