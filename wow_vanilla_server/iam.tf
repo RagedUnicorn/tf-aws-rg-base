@@ -208,3 +208,67 @@ resource "aws_iam_user" "wow_vanilla_server_user" {
 resource "aws_iam_access_key" "wow_vanilla_server_key" {
   user = "${aws_iam_user.wow_vanilla_server_user.name}"
 }
+
+##############
+# API GATEWAY
+##############
+data "aws_iam_policy_document" "api_gateway_policy_document" {
+  statement {
+    actions = [
+      "apigateway:POST",
+      "apigateway:GET",
+      "apigateway:PUT",
+      "apigateway:DELETE"
+    ]
+
+    resources = [
+      "*"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "api_gateway_policy" {
+  name        = "rg-tf-wow-vanilla-server-api-gateway"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server api gateway policy"
+  policy      = "${data.aws_iam_policy_document.api_gateway_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "api_gateway_policy_attach" {
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.api_gateway_policy.arn}"
+}
+
+##############
+# ROUTE53
+##############
+data "aws_iam_policy_document" "route53_policy_document" {
+  statement {
+    actions = [
+      "route53:CreateHostedZone",
+      "route53:GetChange",
+      "route53:GetHostedZone",
+      "route53:ListTagsForResource",
+      "route53:ChangeResourceRecordSets",
+      "route53:ListResourceRecordSets",
+      "route53:DeleteHostedZone",
+      "route53:UpdateHostedZoneComment"
+    ]
+
+    resources = [
+      "*"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "route53_policy" {
+  name        = "rg-tf-wow-vanilla-server-route53"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server route53 policy"
+  policy      = "${data.aws_iam_policy_document.route53_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "route53_policy_attach" {
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.route53_policy.arn}"
+}
