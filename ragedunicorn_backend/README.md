@@ -1,4 +1,4 @@
-# RagedUnicorn Backend
+# ragedunicorn-backend
 
 > The base bucket to store terraform state of all modules within this repository
 
