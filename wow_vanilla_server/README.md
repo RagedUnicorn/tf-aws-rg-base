@@ -8,7 +8,15 @@ A module for creating the basic resources such as S3 bucket for storing terrafor
 
 [tf-aws-wow-vanilla-server](https://github.com/RagedUnicorn/tf-aws-wow-vanilla-server)
 
-## Output
+## Inputs
+
+| Name       | Description        | Type   | Default        | Required |
+|------------|--------------------|--------|----------------|----------|
+| access_key | The AWS access key | string | -              | yes      |
+| aws_region | AWS region         | string | `eu-central-1` | no       |
+| secret_key | The AWS secret key | string | -              | yes      |
+
+## Outputs
 
 #### S3 Bucket
 
