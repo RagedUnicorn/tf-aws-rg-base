@@ -246,14 +246,12 @@ resource "aws_iam_user_policy_attachment" "api_gateway_policy_attach" {
 data "aws_iam_policy_document" "route53_policy_document" {
   statement {
     actions = [
-      "route53:CreateHostedZone",
-      "route53:GetChange",
-      "route53:GetHostedZone",
+      "route53:ListHostedZones",
       "route53:ListTagsForResource",
-      "route53:ChangeResourceRecordSets",
       "route53:ListResourceRecordSets",
-      "route53:DeleteHostedZone",
-      "route53:UpdateHostedZoneComment",
+      "route53:GetHostedZone",
+      "route53:ChangeResourceRecordSets",
+      "route53:GetChange",
     ]
 
     resources = [
