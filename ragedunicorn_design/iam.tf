@@ -13,6 +13,9 @@ data "aws_iam_policy_document" "s3_policy_document" {
   }
 }
 
+#############
+# IAM Policy
+#############
 resource "aws_iam_policy" "s3_policy" {
   name        = "rg-tf-ragedunicorn-design-s3"
   path        = "/ragedunicorn_design/"

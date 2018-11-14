@@ -2,7 +2,7 @@
 # S3
 #####
 output "id" {
-  description = "ID of the created bucket"
+  description = "Id of the created bucket"
   value       = "${aws_s3_bucket.ragedunicorn_design.id}"
 }
 
