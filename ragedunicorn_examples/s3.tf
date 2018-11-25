@@ -18,8 +18,10 @@ resource "aws_s3_bucket" "state_store" {
   }
 
   tags {
-    Name        = "tf-ragedunicorn-examples"
-    Description = "Ragedunicorn S3 examples bucket"
-    Environment = "Prod"
+    Type         = "rg-generated"
+    Organization = "ragedunicorn"
+    Name         = "tf-ragedunicorn-examples"
+    Description  = "Ragedunicorn S3 examples bucket"
+    Environment  = "prod"
   }
 }

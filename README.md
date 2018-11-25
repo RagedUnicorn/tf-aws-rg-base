@@ -22,6 +22,30 @@ A list of applications that are managed by this repository:
 | ragedunicorn_examples | A module for storing terraform state for example projects         |
 | wow_vanilla_server    | A module for creating the infrastructure for a wow vanilla server |
 
+## Tagging
+
+Resources that are generated with terraform should get the following default tags
+
+| Tag          | Values       | Description                                                                                               |
+|--------------|--------------|-----------------------------------------------------------------------------------------------------------|
+| Type         | rg-generated | Mark resources with type. `rg-generated` in this case means that the resource was automatically generated |
+| Organization | ragedunicorn | Mark resources with organization that it belongs to                                                       |
+| Name         | projectname  | Mark resources with projectname that it belongs to                                                        |
+| Description  | description  | Some description about the resource                                                                       |
+| Environment  | prod/test    | Mark the resource with the environment it belongs to                                                      |
+
+Example:
+
+```hcl
+tags {
+  Type         = "rg-generated"
+  Organization = "ragedunicorn"
+  Name         = "name"
+  Description  = "description"
+  Environment  = "prod"
+}
+```
+
 ## Setup
 
 ### Credentials

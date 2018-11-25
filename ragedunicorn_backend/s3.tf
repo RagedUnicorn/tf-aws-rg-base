@@ -18,8 +18,10 @@ resource "aws_s3_bucket" "ragedunicorn_backend" {
   }
 
   tags {
-    Name        = "tf-ragedunicorn-backend"
-    Description = "Ragedunicorn base S3 backend bucket"
-    Environment = "Prod"
+    Type         = "rg-generated"
+    Organization = "ragedunicorn"
+    Name         = "tf-ragedunicorn-backend"
+    Description  = "Ragedunicorn base S3 backend bucket"
+    Environment  = "prod"
   }
 }

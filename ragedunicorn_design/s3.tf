@@ -18,8 +18,10 @@ resource "aws_s3_bucket" "ragedunicorn_design" {
   }
 
   tags {
-    Name        = "tf-ragedunicorn-design"
-    Description = "Ragedunicorn S3 design bucket"
-    Environment = "Prod"
+    Type         = "rg-generated"
+    Organization = "ragedunicorn"
+    Name         = "tf-ragedunicorn-design"
+    Description  = "Ragedunicorn S3 design bucket"
+    Environment  = "prod"
   }
 }
