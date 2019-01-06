@@ -4,7 +4,6 @@
 
 This module is intended to create base resources for use within the RagedUnicorn organization. This includes basic roles and users that don't belong to a specific application or project or other aws resources.
 
-
 ## Inputs
 
 | Name       | Description        | Type   | Default        | Required |
@@ -13,7 +12,6 @@ This module is intended to create base resources for use within the RagedUnicorn
 | aws_region | AWS region         | string | `eu-central-1` | no       |
 | secret_key | The AWS secret key | string | -              | yes      |
 
-
 ## Outputs
 
 | Name                        | Description                                      |
@@ -21,6 +19,11 @@ This module is intended to create base resources for use within the RagedUnicorn
 | gateway_push_logs_role_arn  | The arn name of the Api Gateway push logs role   |
 | gateway_push_logs_role_name | The name of the Api Gateway push logs role       |
 | dns_name_servers            | The list of DNS name servers for the Hosted Zone |
+| iam_arn                     | The ARN assigned by AWS for this user            |
+| iam_name                    | The user's name                                  |
+| iam_unique_id               | The unique ID assigned by AWS                    |
+| iam_access_key              | The AWS access key                               |
+| iam_secret_key              | The AWS secret key                               |
 
 ## Creates
 
@@ -101,3 +104,7 @@ This arn has to be manually setup inside Api Gateway settings.
 [Settings](https://eu-central-1.console.aws.amazon.com/apigateway/home?region=eu-central-1#/settings)
 
 Subsequently logging capabilities can then be activated for Gateway APIs.
+
+### Client User
+
+The module creates a basic IAM user for S3 access. This can be used for tools such as Transmit. Consider creating a separate user for specific projects before reusing this user.
