@@ -20,8 +20,8 @@ resource "aws_s3_bucket" "state_store" {
   tags {
     Type         = "rg-generated"
     Organization = "ragedunicorn"
-    Name        = "tf-wow-vanilla-server"
-    Description = "Ragedunicorn WoW-Vanilla-Server S3 backend bucket"
-    Environment = "prod"
+    Name         = "tf-wow-vanilla-server"
+    Description  = "Ragedunicorn WoW-Vanilla-Server S3 backend bucket"
+    Environment  = "prod"
   }
 }
