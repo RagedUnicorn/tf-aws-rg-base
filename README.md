@@ -22,6 +22,7 @@ A list of applications that are managed by this repository:
 | ragedunicorn_video    | A module for storing and working with video projects              |
 | ragedunicorn_examples | A module for storing terraform state for example projects         |
 | wow_vanilla_server    | A module for creating the infrastructure for a wow vanilla server |
+| wow_legion_server     | A module for creating the infrastructure for a wow legion server  |
 
 ## Tagging
 
