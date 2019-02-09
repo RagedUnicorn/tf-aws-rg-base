@@ -198,18 +198,6 @@ resource "aws_iam_user_policy_attachment" "ec2_policy_attach" {
   policy_arn = "${aws_iam_policy.ec2_policy.arn}"
 }
 
-###########
-# IAM User
-###########
-resource "aws_iam_user" "wow_vanilla_server_user" {
-  name = "rg_cli_tf_wow_vanilla_server_deployer"
-  path = "/wow_vanilla_server/"
-}
-
-resource "aws_iam_access_key" "wow_vanilla_server_key" {
-  user = "${aws_iam_user.wow_vanilla_server_user.name}"
-}
-
 ##############
 # API GATEWAY
 ##############
@@ -270,4 +258,43 @@ resource "aws_iam_policy" "route53_policy" {
 resource "aws_iam_user_policy_attachment" "route53_policy_attach" {
   user       = "${aws_iam_user.wow_vanilla_server_user.name}"
   policy_arn = "${aws_iam_policy.route53_policy.arn}"
+}
+
+####################
+# S3 Policy
+####################
+data "aws_iam_policy_document" "s3_policy_document" {
+  statement {
+    actions = [
+      "s3:*",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+}
+
+resource "aws_iam_policy" "s3_policy" {
+  name        = "rg-tf-wow-vanilla-server-s3"
+  path        = "/wow_vanilla_server/"
+  description = "wow-vanilla-server s3 policy"
+  policy      = "${data.aws_iam_policy_document.s3_policy_document.json}"
+}
+
+resource "aws_iam_user_policy_attachment" "s3_policy_attach" {
+  user       = "${aws_iam_user.wow_vanilla_server_user.name}"
+  policy_arn = "${aws_iam_policy.s3_policy.arn}"
+}
+
+###########
+# IAM User
+###########
+resource "aws_iam_user" "wow_vanilla_server_user" {
+  name = "rg_cli_tf_wow_vanilla_server_deployer"
+  path = "/wow_vanilla_server/"
+}
+
+resource "aws_iam_access_key" "wow_vanilla_server_key" {
+  user = "${aws_iam_user.wow_vanilla_server_user.name}"
 }
