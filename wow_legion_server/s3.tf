@@ -25,3 +25,23 @@ resource "aws_s3_bucket" "state_store" {
     Environment = "prod"
   }
 }
+
+############
+# S3 Bucket
+############
+resource "aws_s3_bucket" "legion_data" {
+  bucket = "rg-tf-wow-legion-data"
+  acl    = "public-read"
+
+  versioning {
+    enabled = false
+  }
+
+  tags {
+    Type         = "rg-generated"
+    Organization = "ragedunicorn"
+    Name         = "tf-wow-legion-data"
+    Description  = "Ragedunicorn WoW-Legion-Server S3 data bucket"
+    Environment  = "prod"
+  }
+}
