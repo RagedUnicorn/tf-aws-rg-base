@@ -18,6 +18,7 @@ A list of applications that are managed by this repository:
 |-----------------------|-------------------------------------------------------------------|
 | ragedunicorn_backend  | The base module for creating the backend for this repository      |
 | ragedunicorn_base     | The base module for the RagedUnicorn organization                 |
+| ragedunicorn_budget   | A module for setting up budget tracking                           |
 | ragedunicorn_design   | A module for storing and working with design objects              |
 | ragedunicorn_video    | A module for storing and working with video projects              |
 | ragedunicorn_examples | A module for storing terraform state for example projects         |
