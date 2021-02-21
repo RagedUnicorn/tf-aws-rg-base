@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "state_store" {
     }
   }
 
-  tags {
+  tags = {
     Type         = "rg-generated"
     Organization = "ragedunicorn"
     Name         = "tf-ragedunicorn-examples"
