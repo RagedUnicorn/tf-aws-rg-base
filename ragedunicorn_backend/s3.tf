@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "ragedunicorn_backend" {
     }
   }
 
-  tags {
+  tags = {
     Type         = "rg-generated"
     Organization = "ragedunicorn"
     Name         = "tf-ragedunicorn-backend"
