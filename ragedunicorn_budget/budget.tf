@@ -18,7 +18,7 @@ resource "aws_budgets_budget" "budget_ec2" {
   time_period_start = "2018-01-01_00:00"
   time_unit         = "MONTHLY"
 
-  cost_filters {
+  cost_filters = {
     Service = "Amazon Elastic Compute Cloud - Compute"
   }
 }
@@ -31,7 +31,7 @@ resource "aws_budgets_budget" "budget_lambda" {
   time_period_start = "2018-01-01_00:00"
   time_unit         = "MONTHLY"
 
-  cost_filters {
+  cost_filters = {
     Service = "AWS Lambda"
   }
 }
@@ -44,7 +44,7 @@ resource "aws_budgets_budget" "budget_storage" {
   time_period_start = "2018-01-01_00:00"
   time_unit         = "MONTHLY"
 
-  cost_filters {
+  cost_filters = {
     Service = "Amazon Simple Storage Service"
   }
 }
@@ -57,7 +57,7 @@ resource "aws_budgets_budget" "budget_cloudwatch" {
   time_period_start = "2018-01-01_00:00"
   time_unit         = "MONTHLY"
 
-  cost_filters {
+  cost_filters = {
     Service = "AmazonCloudWatch"
   }
 }
@@ -75,11 +75,11 @@ resource "aws_cloudwatch_metric_alarm" "account_billing_alarm_high" {
   statistic           = "Average"
   threshold           = "60"
   alarm_description   = "Billing alarm for linked account. Highest expected value."
-  alarm_actions       = ["${aws_sns_topic.billing_alarm_topic.arn}"]
+  alarm_actions       = [aws_sns_topic.billing_alarm_topic.arn]
 
-  dimensions {
+  dimensions = {
     Currency      = "USD"
-    LinkedAccount = "${var.linked_account}"
+    LinkedAccount = var.linked_account
   }
 }
 
@@ -93,11 +93,11 @@ resource "aws_cloudwatch_metric_alarm" "account_billing_alarm_mid" {
   statistic           = "Average"
   threshold           = "30"
   alarm_description   = "Billing alarm for linked account. Mid expected value."
-  alarm_actions       = ["${aws_sns_topic.billing_alarm_topic.arn}"]
+  alarm_actions       = [aws_sns_topic.billing_alarm_topic.arn]
 
-  dimensions {
+  dimensions = {
     Currency      = "USD"
-    LinkedAccount = "${var.linked_account}"
+    LinkedAccount = var.linked_account
   }
 }
 
