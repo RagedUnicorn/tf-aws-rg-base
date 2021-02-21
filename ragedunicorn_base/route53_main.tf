@@ -5,7 +5,7 @@ resource "aws_route53_zone" "main_zone" {
   name    = "ragedunicorn.com"
   comment = "main rg domain"
 
-  tags {
+  tags = {
     Type         = "rg-generated"
     Organization = "ragedunicorn"
     Name         = "tf-ragedunicorn-base"
