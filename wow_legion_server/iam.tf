@@ -27,12 +27,12 @@ resource "aws_iam_policy" "iam_policy" {
   name        = "rg-tf-wow-legion-server-iam"
   path        = "/wow_legion_server/"
   description = "wow-legion-server iam policy"
-  policy      = "${data.aws_iam_policy_document.iam_policy_document.json}"
+  policy      = data.aws_iam_policy_document.iam_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "iam_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.iam_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.iam_policy.arn
 }
 
 ####################
@@ -69,12 +69,12 @@ resource "aws_iam_policy" "cloudwatch_policy" {
   name        = "rg-tf-wow-legion-server-cloudwatch"
   path        = "/wow_legion_server/"
   description = "wow-legion-server cloudwatch policy"
-  policy      = "${data.aws_iam_policy_document.cloudwatch_policy_document.json}"
+  policy      = data.aws_iam_policy_document.cloudwatch_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "cloudwatch_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.cloudwatch_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.cloudwatch_policy.arn
 }
 
 ################
@@ -113,12 +113,12 @@ resource "aws_iam_policy" "lambda_policy" {
   name        = "rg-tf-wow-legion-server-lambda"
   path        = "/wow_legion_server/"
   description = "wow-legion-server lambda policy"
-  policy      = "${data.aws_iam_policy_document.lambda_policy_document.json}"
+  policy      = data.aws_iam_policy_document.lambda_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "lambda_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.lambda_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
 #############
@@ -190,12 +190,12 @@ resource "aws_iam_policy" "ec2_policy" {
   name        = "rg-tf-wow-legion-server-ec2"
   path        = "/wow_legion_server/"
   description = "wow-legion-server ec2 policy"
-  policy      = "${data.aws_iam_policy_document.ec2_policy_document.json}"
+  policy      = data.aws_iam_policy_document.ec2_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "ec2_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.ec2_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.ec2_policy.arn
 }
 
 ##############
@@ -220,12 +220,12 @@ resource "aws_iam_policy" "api_gateway_policy" {
   name        = "rg-tf-wow-legion-server-api-gateway"
   path        = "/wow_legion_server/"
   description = "wow-legion-server api gateway policy"
-  policy      = "${data.aws_iam_policy_document.api_gateway_policy_document.json}"
+  policy      = data.aws_iam_policy_document.api_gateway_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "api_gateway_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.api_gateway_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.api_gateway_policy.arn
 }
 
 ##############
@@ -252,12 +252,12 @@ resource "aws_iam_policy" "route53_policy" {
   name        = "rg-tf-wow-legion-server-route53"
   path        = "/wow_legion_server/"
   description = "wow-legion-server route53 policy"
-  policy      = "${data.aws_iam_policy_document.route53_policy_document.json}"
+  policy      = data.aws_iam_policy_document.route53_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "route53_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.route53_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.route53_policy.arn
 }
 
 ####################
@@ -279,12 +279,12 @@ resource "aws_iam_policy" "s3_policy" {
   name        = "rg-tf-wow-legion-server-s3"
   path        = "/wow_legion_server/"
   description = "wow-legion-server s3 policy"
-  policy      = "${data.aws_iam_policy_document.s3_policy_document.json}"
+  policy      = data.aws_iam_policy_document.s3_policy_document.json
 }
 
 resource "aws_iam_user_policy_attachment" "s3_policy_attach" {
-  user       = "${aws_iam_user.wow_legion_server_user.name}"
-  policy_arn = "${aws_iam_policy.s3_policy.arn}"
+  user       = aws_iam_user.wow_legion_server_user.name
+  policy_arn = aws_iam_policy.s3_policy.arn
 }
 
 ###########
@@ -296,5 +296,5 @@ resource "aws_iam_user" "wow_legion_server_user" {
 }
 
 resource "aws_iam_access_key" "wow_legion_server_key" {
-  user = "${aws_iam_user.wow_legion_server_user.name}"
+  user = aws_iam_user.wow_legion_server_user.name
 }
